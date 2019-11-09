@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 import { 
   Button,
   CheckBox,
@@ -54,13 +54,17 @@ export default class App extends Component {
       <ThemeProvider theme={theme}>
         <View style={styles.container}>
           <Profile />
-          <View style={{ flex: 2 }}>
-            {checklists.map((check, i) => (
-              <Item 
-                key={i} 
-                title={`${check.title} ${i}`}
-                description={check.description} />
-            ))}
+          <View style={{ flex: 1 }}>
+            <FlatList style={{ flex: 1 }}
+              data={checklists}
+              keyExtractor={(item, index) => `${index}`}
+              renderItem={({item, index: i}) => {
+                return (
+                  <Item
+                    title={`${item.title} ${i}`}
+                    description={item.description} />
+                )
+              }} />
           </View>
           <Text style={styles.welcome}>Welcome to React Native!</Text>
           <Text style={styles.instructions}>To get started, edit App.js</Text>
