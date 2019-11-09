@@ -10,9 +10,9 @@ class Profile extends React.Component {
 
   render () {
     return (
-      <View styles={styles.profile}>
+      <View style={styles.profile}>
         <View style={styles.avatar}>
-          <Avatar
+          <Avatar style={{ width: 50, height: 50 }}
             rounded
             source={{
               uri:
@@ -32,7 +32,6 @@ class Profile extends React.Component {
 
 const styles = StyleSheet.create({
   profile: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
   },
   avatar: {
     width: 80,
-    height: 80
+    paddingLeft: 20,
   }
 });
 

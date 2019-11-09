@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Carolina Valencia",
+    "email": "carolina.valencia@sumup.com",
+    "slack": "@carol.valencia",
+    "role": "SysOps"
+  },
+  {
+    "name": "Diego Lima",
+    "email": "diego.gomes@sumup.com",
+    "slack": "@diego.lima",
+    "role": "Software Engineer"
+  },
+  {
+    "name": "Giorgio Torres",
+    "email": "giorgio.torres@sumup.com",
+    "slack": "@giorgio.torres",
+    "role": "Software Engineer"
+  },
+  {
+    "name": "Lucas Mari",
+    "email": "lucas.mari@sumup.com",
+    "slack": "@lucas.mari",
+    "role": "SysOps"
+  }
+]

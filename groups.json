@@ -1,0 +1,22 @@
+[
+  {
+    "name": "SysOps",
+    "description": "SysOps Group"
+  },
+  {
+    "name": "Telecom",
+    "description": "Squad Telecom"
+  },
+  {
+    "name": "E&P",
+    "description": "Engineering and Product Team"
+  },
+  {
+    "name": "Hardware",
+    "description": "Hardware Tribe Group"
+  },
+  {
+    "name": "People",
+    "description": "SumUp People Team"
+  }
+]

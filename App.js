@@ -8,8 +8,9 @@ import {
   ThemeProvider
 } from 'react-native-elements';
 
-import Item from './components/Item'
-import Profile from './components/Profile'
+import Item from './components/Item';
+import Profile from './components/Profile';
+import items from './items.json';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -25,28 +26,7 @@ const theme = {
   },
 };
 
-const checklists = [
-  {
-    title: 'TODO',
-    description: 'DESCRIPTION'
-  },
-  {
-    title: 'TODO',
-    description: 'DESCRIPTION'
-  },
-  {
-    title: 'TODO',
-    description: 'DESCRIPTION'
-  },
-  {
-    title: 'TODO',
-    description: 'DESCRIPTION'
-  },
-  {
-    title: 'TODO',
-    description: 'DESCRIPTION'
-  }
-]
+const checklists = items;
 
 export default class App extends Component {
   render() {
@@ -54,15 +34,16 @@ export default class App extends Component {
       <ThemeProvider theme={theme}>
         <View style={styles.container}>
           <Profile />
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 2 }}>
             <FlatList style={{ flex: 1 }}
               data={checklists}
               keyExtractor={(item, index) => `${index}`}
               renderItem={({item, index: i}) => {
                 return (
                   <Item
-                    title={`${item.title} ${i}`}
-                    description={item.description} />
+                    title={`${item.todo} ${i}`}
+                    description={item.description}
+                    link={item.link} />
                 )
               }} />
           </View>
