@@ -8,6 +8,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/css": "^10.0.9",
+    "@emotion/styled": "^10.0.10",
     "expo": "^35.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
