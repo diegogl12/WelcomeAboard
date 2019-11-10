@@ -1,45 +1,103 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
-  View
+  View,
+  Image
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Text } from "react-native-elements";
 
-class Profile extends React.Component {
+import TrophyPng from "../assets/icons/trophy.png";
 
-  render () {
-    return (
+const Profile = ({info, name}) => {
+  const totalDone = info.reduce((acc, item) => ({done: acc.done + item.done}));
+  const total = info.reduce((acc, item) => ({ total: acc.total + item.total }));
+  const totalPercentage = totalDone.done/total.total*100+"%";
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.background} />
       <View style={styles.profile}>
         <View style={styles.avatar}>
-          <Avatar style={{ width: 50, height: 50 }}
+          <Avatar
+            size={90}
             rounded
             source={{
               uri:
-                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
             }}
           />
         </View>
-        <View style={{ width: '80%' }}>
-          <Text>FirstName LastName</Text>
-          <Text>@firstname.lastname</Text>
+        <View style={styles.perfilInfo}>
+          <Text h4 style={{ color: "white", marginBottom: 3 }}>
+            Hello, {name}
+          </Text>
+          <View style={styles.subTitle}>
+            <Image
+              style={{ width: 15, height: 15 }}
+              source={require("../assets/icons/trophy.png")}
+            />
+            <Text style={{ color: "white", marginLeft: 6, fontSize: 16 }}>
+              {totalDone.done} accomplishments
+            </Text>
+          </View>
+          <View style={styles.percentage}>
+            {console.log(totalPercentage)}
+            <View
+              style={{
+                height: "100%",
+                width: totalPercentage,
+                backgroundColor: "#3388FF"
+              }}
+            ></View>
+          </View>
         </View>
       </View>
-    );
-  }
-
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    padding: 0,
+    marginBottom: 15
+  },
+  background: {
+    position: "absolute",
+    width: "100%",
+    height: 130,
+    backgroundColor: "#3388FF"
+  },
   profile: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    width: '100%'
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingTop: 70
   },
   avatar: {
-    width: 80,
-    paddingLeft: 20,
+    display: "block",
+    paddingLeft: 20
+  },
+  subTitle: {
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: 12
+  },
+  perfilInfo: {
+    marginLeft: 9,
+    position: "relative",
+    width: "80%"
+  },
+  percentage: {
+    width: 262,
+    height: 8,
+    borderRadius: 10,
+    borderColor: "#D8DDE1",
+    borderWidth: 1
+  },
+  percentageColor: {
+
   }
 });
 
