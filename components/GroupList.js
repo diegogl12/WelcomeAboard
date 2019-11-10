@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { Text, ListItem } from "react-native-elements";
 
-const GroupList = ({ items }) => (
+import groups from '../groups.json';
+
+const GroupList = ({ navigation }) => (
   <View style={styles.viewContainer}>
-    {items.map((item, index) => (
+    {groups.map((item, index) => (
       <ListItem
+        onPress={() => navigation.navigate('Checklist')}
         key={index}
-        title={<Text h2>{item.name}</Text>}
+        title={<Text h4>{item.name}</Text>}
         leftElement={
-          <Text style={styles.text} h3>
+          <Text style={styles.text} h5>
             {item.done}/{item.total}
           </Text>
         }
