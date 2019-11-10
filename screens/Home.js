@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Platform, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, FlatList, Platform, StyleSheet, Text, View } from 'react-native';
 import { 
   Button,
   CheckBox,
