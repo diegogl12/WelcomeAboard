@@ -49,11 +49,12 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     height: 153,
-    borderRadius: 4
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 3 },
-    // shadowOpacity: 0.2,
-    // shadowRadius: 6
+    backgroundColor: "white",
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2
   },
   background: {
     width: "100%",
@@ -70,16 +71,15 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     paddingHorizontal: 25,
-    paddingVertical: 16,
-    borderColor: 'grey',
-    borderWidth: 1,
-    borderTopColor: 'transparent',
-    borderLeftColor: 'transparent'
+    paddingVertical: 16
+    // borderColor: "red",
+    // borderWidth: 1,
+    // borderTopColor: "transparent"
   },
-  stepsView:{
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  stepsView: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 5
   }
 });

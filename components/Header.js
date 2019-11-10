@@ -1,49 +1,29 @@
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Image
-} from 'react-native';
+import React from "react";
+import { StyleSheet, View, Image } from "react-native";
 import { Avatar, Text } from "react-native-elements";
 
 import TrophyPng from "../assets/icons/trophy.png";
 
-const Profile = ({info, name}) => {
-  let totalDone = 0;
-  let total = 0;
-  if(info.length > 0) {
-    totalDone = info.reduce((acc, item) => ({done: acc.done + item.done}));
-    total = info.reduce((acc, item) => ({ total: acc.total + item.total }));
-  }
-  let totalPercentage = totalDone.done/total.total*100+"%";
+const Header = ({ total, done, name }) => {
+  const totalPercentage = done/total * 100 + "%";
 
   return (
     <View style={styles.container}>
       <View style={styles.background}>
-        <Text h4 style={{ color: "white", marginBottom: 3 }}>
-          Hello, {name}
+        <Text h4 style={{ color: "#3388FF", marginBottom: 3 }}>
+          {name}
         </Text>
         <View style={styles.subTitle}>
           <Image
             style={{ width: 15, height: 15 }}
             source={require("../assets/icons/trophy.png")}
           />
-          <Text style={{ color: "white", marginLeft: 6, fontSize: 16 }}>
-            {totalDone.done} accomplishments
+          <Text style={{ marginLeft: 6, fontSize: 16 }}>
+            {done} accomplishments
           </Text>
         </View>
       </View>
       <View style={styles.profile}>
-        <View style={styles.avatar}>
-          <Avatar
-            size={90}
-            rounded
-            source={{
-              uri:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
-            }}
-          />
-        </View>
         <View style={styles.perfilInfo}>
           <View style={styles.percentage}>
             <View
@@ -64,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     padding: 0,
-    marginBottom: 47
+    marginBottom: 9
   },
   background: {
     display: "flex",
@@ -72,7 +52,7 @@ const styles = StyleSheet.create({
     paddingLeft: 120,
     width: "100%",
     height: 130,
-    backgroundColor: "#3388FF"
+    backgroundColor: "#EDF4FC"
   },
   profile: {
     display: "flex",
@@ -104,4 +84,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Profile;
+export default Header;
