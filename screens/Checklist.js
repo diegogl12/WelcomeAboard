@@ -22,11 +22,11 @@ class Checklist extends React.Component {
 
     if(checked) {
       checkCount += 1;
-      
+
     } else {
       checkCount -= 1;
     }
-    
+
     this.setState({ checkCount });
 
     if(onChange) {
@@ -41,15 +41,13 @@ class Checklist extends React.Component {
         <FlatList style={{ flex: 1 }}
           data={list}
           keyExtractor={(item, index) => `${index}`}
-          renderItem={({item, index: i}) => {
-            return (
+          renderItem={({item, index: i}) =>
               <Item
                 onCheckChange={this.itemCheckChanged}
                 title={`${item.todo} ${i}`}
                 description={item.description}
                 link={item.link} />
-            )
-          }} />
+          } />
       </View>
     );
   }
