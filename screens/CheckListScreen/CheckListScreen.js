@@ -1,30 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 
 import Item from '../../components/Item.js';
 import GroupInfo from "../../components/GroupInfo.js";
 import Checklist from '../Checklist';
+import items from '../../items.json';
 
-const list = [
-  {
-    title: "jira",
-    description: "add a jira account",
-    link: "google.com"
-  },
-  {
-    title: "confluence",
-    description: "add a confluence account",
-    link: "google.com"
-  }
-];
+const CheckListScreen = ({ navigation }) => {
+  const [ checkCount, setCheckCount ] = useState(0);
+  const groupName = navigation.getParam('groupName');
 
-const CheckListScreen = () => (
-  <View style={styles.container}>
-    {/* <View>{IMAGE_MAP["sysops"]}</View> */}
-    <GroupInfo total={5} done={2} name={"SYSOPS"} info={"sysops é top!"} />
-    <Checklist />
-  </View>
-);
+  return (
+    <View style={styles.container}>
+      <GroupInfo total={items[groupName].length} done={checkCount} name={groupName} info={`${groupName} checklist`} />
+      <Checklist list={items[groupName]} onChange={setCheckCount} />
+    </View>
+  )
+};
 
 const styles = StyleSheet.create({
   container: {

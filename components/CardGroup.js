@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { Text } from "react-native-elements";
 
-const CardGroup = ({ name, done, total, icon }) => (
-  <View style={styles.cardContainer}>
+const CardGroup = ({ name, done, total, onPress }) => (
+  <TouchableOpacity style={styles.cardContainer} onPress={onPress}>
     <View style={styles.card}>
       <View style={styles.background}>
         <Image
@@ -33,7 +33,7 @@ const CardGroup = ({ name, done, total, icon }) => (
         </View>
       </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({

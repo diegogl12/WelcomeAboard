@@ -5,6 +5,16 @@ import { ThemeProvider, colors } from "react-native-elements";
 import Profile from "../../components/Profile";
 import CardGroup from "../../components/CardGroup"
 
+import groups from '../../groups.json';
+import items from '../../items.json';
+
+console.log(items)
+console.log(groups)
+
+groups.forEach(group => {
+  console.log(group.name, items[group.name].length)
+});
+
 const theme = {
   colors: {
     ...Platform.select({
@@ -14,41 +24,18 @@ const theme = {
   }
 };
 
-const listMock = [
-  {
-    name: "Sysops",
-    total: 10,
-    done: 9
-  },
-  {
-    name: "Slack",
-    total: 16,
-    done: 3
-  },
-  {
-    name: "Other",
-    total: 5,
-    done: 5
-  },
-  {
-    name: "Squad",
-    total: 6,
-    done: 1
-  }
-];
-
-const Home = () => (
+const Home = ({ navigation }) => (
   <ThemeProvider theme={theme}>
     <View style={styles.container}>
-      <Profile info={listMock} name={"Joana"} />
-      <FlatList data={listMock}
+      <Profile info={groups} name={"Joana"} />
+      <FlatList data={groups}
         keyExtractor={(item, index) => `${index}`}
-        renderItem={({item}) =>
+        renderItem={({item: group}) =>
         <CardGroup
-          name={item.name}
-          total={item.total}
-          done={item.done}
-          onPress={() => this.props.navigation.navigate("Login")}
+          name={group.name}
+          total={items[group.name].length}
+          done={0}
+          onPress={() => navigation.navigate('Checklist', { groupName: group.name })}
         />
         } />
     </View>

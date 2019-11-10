@@ -41,7 +41,6 @@ const Profile = ({info, name}) => {
             </Text>
           </View>
           <View style={styles.percentage}>
-            {console.log(totalPercentage)}
             <View
               style={{
                 height: "100%",

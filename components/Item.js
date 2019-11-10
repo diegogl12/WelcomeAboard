@@ -16,6 +16,15 @@ class Item extends React.Component {
     }
   }
 
+  checkChanged = () => {
+    const { checked } = this.state;
+    this.setState({checked: !checked})
+  
+    if(this.props.onCheckChange) {
+      this.props.onCheckChange({ checked: !checked });
+    }
+  }
+
   render () {
     const { title, description, link } = this.props;
     
@@ -23,7 +32,7 @@ class Item extends React.Component {
       <ListItem
         title={title}
         subtitle={description}
-        leftElement={<CheckBox checked={this.state.checked} onPress={() => this.setState({checked: !this.state.checked})} />}
+        leftElement={<CheckBox checked={this.state.checked} onPress={this.checkChanged} />}
         rightElement={link && <Icon name='launch' color='blue' onPress={() => Linking.openURL(link)} />}
         bottomDivider />
     );
