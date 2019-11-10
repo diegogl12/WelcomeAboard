@@ -3,7 +3,8 @@ import { FlatList, StyleSheet, Platform, View } from "react-native";
 import { ThemeProvider, colors } from "react-native-elements";
 
 import Profile from "../../components/Profile";
-import CardGroup from "../../components/CardGroup"
+import CardGroup from "../../components/CardGroup";
+import Footer from "../../components/Footer";
 
 import groups from '../../groups.json';
 import items from '../../items.json';
@@ -37,7 +38,9 @@ const Home = ({ navigation }) => (
           done={0}
           onPress={() => navigation.navigate('Checklist', { groupName: group.name })}
         />
-        } />
+        }
+      />
+      <Footer />
     </View>
   </ThemeProvider>
 );
