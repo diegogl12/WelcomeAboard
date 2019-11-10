@@ -1,16 +1,133 @@
-[
-  {
-    "todo": "Something to do",
-    "description": "You need to do something",
-    "link": "https://www.google.com.br"
-  },
-  {
-    "todo": "Another thing to do",
-    "description": "another thing you need to do",
-    "link": "https://www.sumup.com"
-  },
-  {
-    "todo": "To Do 1",
-    "description": "To Do number 1"
-  }
-]
+{
+  "SysOps": [
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    },
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    },
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    }
+  ],
+
+  "Telecom": [
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    }
+  ],
+
+  "Slack": [
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    }
+  ],
+
+  "Hardware": [
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    }
+  ],
+
+  "People": [
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    },
+    {
+      "todo": "Something to do",
+      "description": "You need to do something",
+      "link": "https://www.google.com.br"
+    },
+    {
+      "todo": "Another thing to do",
+      "description": "another thing you need to do",
+      "link": "https://www.sumup.com"
+    },
+    {
+      "todo": "To Do 1",
+      "description": "To Do number 1"
+    }
+  ]
+}
+
