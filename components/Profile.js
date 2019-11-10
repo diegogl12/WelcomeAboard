@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     paddingTop: 70
   },
   avatar: {
-    display: "block",
     paddingLeft: 20
   },
   subTitle: {

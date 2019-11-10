@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Platform, View } from "react-native";
+import { FlatList, StyleSheet, Platform, View } from "react-native";
 import { ThemeProvider, colors } from "react-native-elements";
 
 import Profile from "../../components/Profile";
@@ -41,15 +41,16 @@ const Home = () => (
   <ThemeProvider theme={theme}>
     <View style={styles.container}>
       <Profile info={listMock} name={"Joana"} />
-      {listMock.map(item => (
+      <FlatList data={listMock}
+        keyExtractor={(item, index) => `${index}`}
+        renderItem={({item}) =>
         <CardGroup
           name={item.name}
           total={item.total}
           done={item.done}
-          // icon={iconList.baby}
           onPress={() => this.props.navigation.navigate("Login")}
         />
-      ))}
+        } />
     </View>
   </ThemeProvider>
 );

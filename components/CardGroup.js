@@ -6,12 +6,13 @@ import { Text } from "react-native-elements";
 const CardGroup = ({ name, done, total, icon }) => (
   <View style={styles.cardContainer}>
     <View style={styles.card}>
-      <View style={styles.background} />
-      <View style={styles.contentView}>
+      <View style={styles.background}>
         <Image
-          style={{ width: 40, height: 40, marginRight: 3, marginBottom: 3}}
+          style={styles.icon}
           source={require("../assets/icons/baby.png")}
         />
+      </View>
+      <View style={styles.contentView}>
         <Text style={{ fontSize: 24, fontWeight: "bold", color: "#3388FF" }}>
           {name}
         </Text>
@@ -47,25 +48,33 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "100%",
-    height: "100%",
-    borderRadius: 4,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6
+    height: 153,
+    borderRadius: 4
+    // shadowColor: "#000",
+    // shadowOffset: { width: 0, height: 3 },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 6
   },
   background: {
-    position: "absolute",
     width: "100%",
     height: 71,
     backgroundColor: "#EDF4FC"
   },
+  icon: {
+    top: 45,
+    left: 25,
+    width: 40,
+    height: 40
+  },
   contentView: {
-    marginTop: 42,
     display: "flex",
     flexDirection: "column",
-    paddingHorizontal: 30,
-    paddingBottom: 16
+    paddingHorizontal: 25,
+    paddingVertical: 16,
+    borderColor: 'grey',
+    borderWidth: 1,
+    borderTopColor: 'transparent',
+    borderLeftColor: 'transparent'
   },
   stepsView:{
     display: 'flex',
