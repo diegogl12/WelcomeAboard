@@ -13,8 +13,8 @@ const GroupInfo = ({ total, done, name, info }) => (
         {info}
       </Text>
     </View>
-    <View style={styles.doneTotelView}>
-      <Text style={styles.doneTotelText}>
+    <View style={styles.doneTotalView}>
+      <Text style={styles.doneTotalText}>
         {done}/{total}
       </Text>
     </View>
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     minHeight: 150,
-    paddingRight: 50,
+    paddingRight: 20,
     borderRightColor: "grey",
     borderRightWidth: 2,
     maxWidth: 200
   },
-  doneTotelView: {
+  doneTotalView: {
     display: "flex",
     flexDirection: 'row',
     alignItems: 'center'
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   nameText: {
     marginBottom: 20
   },
-  doneTotelText: {
-    fontSize: 80
+  doneTotalText: {
+    fontSize: 60
   }
 });
 
