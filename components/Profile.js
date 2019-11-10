@@ -15,7 +15,20 @@ const Profile = ({info, name}) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.background} />
+      <View style={styles.background}>
+        <Text h4 style={{ color: "white", marginBottom: 3 }}>
+          Hello, {name}
+        </Text>
+        <View style={styles.subTitle}>
+          <Image
+            style={{ width: 15, height: 15 }}
+            source={require("../assets/icons/trophy.png")}
+          />
+          <Text style={{ color: "white", marginLeft: 6, fontSize: 16 }}>
+            {totalDone.done} accomplishments
+          </Text>
+        </View>
+      </View>
       <View style={styles.profile}>
         <View style={styles.avatar}>
           <Avatar
@@ -28,18 +41,6 @@ const Profile = ({info, name}) => {
           />
         </View>
         <View style={styles.perfilInfo}>
-          <Text h4 style={{ color: "white", marginBottom: 3 }}>
-            Hello, {name}
-          </Text>
-          <View style={styles.subTitle}>
-            <Image
-              style={{ width: 15, height: 15 }}
-              source={require("../assets/icons/trophy.png")}
-            />
-            <Text style={{ color: "white", marginLeft: 6, fontSize: 16 }}>
-              {totalDone.done} accomplishments
-            </Text>
-          </View>
           <View style={styles.percentage}>
             {console.log(totalPercentage)}
             <View
@@ -60,10 +61,12 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     padding: 0,
-    marginBottom: 15
+    marginBottom: 47
   },
   background: {
-    position: "absolute",
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingLeft: 120,
     width: "100%",
     height: 130,
     backgroundColor: "#3388FF"
@@ -72,11 +75,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "100%",
-    paddingTop: 70
+    width: "100%"
   },
   avatar: {
-    paddingLeft: 20
+    position: "absolute",
+    bottom: -10,
+    left: 20
   },
   subTitle: {
     display: "flex",
@@ -84,19 +88,16 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   perfilInfo: {
-    marginLeft: 9,
-    position: "relative",
+    paddingLeft: 120,
+    paddingTop: 7,
     width: "80%"
   },
   percentage: {
-    width: 262,
+    width: 275,
     height: 8,
     borderRadius: 10,
     borderColor: "#D8DDE1",
     borderWidth: 1
-  },
-  percentageColor: {
-
   }
 });
 
