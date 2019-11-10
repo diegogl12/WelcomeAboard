@@ -40,13 +40,14 @@ const listMock = [
 const Home = () => (
   <ThemeProvider theme={theme}>
     <View style={styles.container}>
-      <Profile info={listMock} name={"Joana"}/>
+      <Profile info={listMock} name={"Joana"} />
       {listMock.map(item => (
         <CardGroup
           name={item.name}
           total={item.total}
           done={item.done}
           // icon={iconList.baby}
+          onPress={() => this.props.navigation.navigate("Login")}
         />
       ))}
     </View>
