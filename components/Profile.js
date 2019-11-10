@@ -15,7 +15,9 @@ const Profile = ({info, name}) => {
     totalDone = info.reduce((acc, item) => ({done: acc.done + item.done}));
     total = info.reduce((acc, item) => ({ total: acc.total + item.total }));
   }
-  let totalPercentage = totalDone.done/total.total*100+"%";
+  // let totalPercentage = totalDone.done/total.total*100+"%";
+
+  let totalPercentage = 0+"%";
 
   return (
     <View style={styles.container}>
@@ -29,7 +31,7 @@ const Profile = ({info, name}) => {
             source={require("../assets/icons/trophy.png")}
           />
           <Text style={{ color: "white", marginLeft: 6, fontSize: 16 }}>
-            {totalDone.done} accomplishments
+            {0} accomplishments
           </Text>
         </View>
       </View>
