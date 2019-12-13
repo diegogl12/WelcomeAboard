@@ -32,28 +32,28 @@ class Home extends React.Component {
   componentDidMount () {
     this.setState({ isLoading: true })
 
-    return fetch('http://a42b73e1d037911eaa7010217db8e776-15379359.us-east-1.elb.amazonaws.com:8080/users')
-    .then((response) => response.json())
-    .then((users) => {
-      console.log(users)
-      this.setState({ name: users[0]['Name'] })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-    .finally(() => {
-      fetch('http://a42b73e1d037911eaa7010217db8e776-15379359.us-east-1.elb.amazonaws.com:8080/groups')
-      .then((response) => response.json())
-      .then((groups) => {
-        this.setState({ groups })
+    return fetch("https://onboarding.dev.sam-app.ro:8080/users")
+      .then(response => response.json())
+      .then(users => {
+        console.log(users);
+        this.setState({ name: users[0]["Name"] });
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(error => {
+        console.log(error);
       })
       .finally(() => {
-        this.setState({ isLoading: false })
-      })
-    })
+        fetch("https://onboarding.dev.sam-app.ro:8080/groups")
+          .then(response => response.json())
+          .then(groups => {
+            this.setState({ groups });
+          })
+          .catch(error => {
+            console.log(error);
+          })
+          .finally(() => {
+            this.setState({ isLoading: false });
+          });
+      });
   }
 
   render () {
@@ -75,7 +75,7 @@ class Home extends React.Component {
                   total={items[group["Name"]].length}
                   done={0}
                   onPress={() =>
-                    navigation.navigate("Checklist", {
+                    navigation.navigate("Task", {
                       groupName: group["Name"]
                     })
                   }
