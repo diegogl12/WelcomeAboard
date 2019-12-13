@@ -1,12 +1,12 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import LoginScreen from './screens/Login';
-import CheckListScreen from './screens/CheckListScreen/CheckListScreen';
+import TaskScreen from './screens/TaskScreen/TaskScreen';
 import HomeScreen from './screens/Home/Home';
 
 const MainNavigator = createStackNavigator({
   Home: { screen: HomeScreen },
-  Checklist: { screen: CheckListScreen }
+  Task: { screen: TaskScreen }
 });
 
 const App = createAppContainer(

@@ -4,9 +4,9 @@ import {
   View
 } from 'react-native';
 
-import Item from '../components/Item';
+import Item from '../../components/Item';
 
-class Checklist extends React.Component {
+class Task extends React.Component {
 
   constructor(props) {
     super(props);
@@ -53,4 +53,4 @@ class Checklist extends React.Component {
   }
 }
 
-export default Checklist;
+export default Task;

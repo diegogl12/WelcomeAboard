@@ -3,11 +3,11 @@ import { Platform, StyleSheet, View } from "react-native";
 
 import Item from '../../components/Item.js';
 import GroupInfo from "../../components/GroupInfo.js";
-import Checklist from '../Checklist';
+import Task from '../Task/Task';
 import items from '../../items.json';
 import Header from "../../components/Header.js";
 
-const CheckListScreen = ({ navigation }) => {
+const TaskScreen = ({ navigation }) => {
   const [ checkCount, setCheckCount ] = useState(0);
   const groupName = navigation.getParam('groupName');
 
@@ -17,11 +17,11 @@ const CheckListScreen = ({ navigation }) => {
         total={items[groupName].length}
         done={checkCount}
         name={groupName}
-        info={`${groupName} checklist`}
+        info={`${groupName} task`}
       />
       <View style={styles.container}>
-        {/* <GroupInfo total={items[groupName].length} done={checkCount} name={groupName} info={`${groupName} checklist`} /> */}
-        <Checklist list={items[groupName]} onChange={setCheckCount} />
+        {/* <GroupInfo total={items[groupName].length} done={checkCount} name={groupName} info={`${groupName} Task`} /> */}
+        <Task list={items[groupName]} onChange={setCheckCount} />
       </View>
     </View>
   );
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CheckListScreen;
+export default TaskScreen;
