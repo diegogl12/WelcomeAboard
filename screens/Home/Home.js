@@ -1,12 +1,21 @@
-import React from 'react';
-import { FlatList, StyleSheet, Platform, View, ActivityIndicator } from "react-native";
+import React from "react";
+import {
+  FlatList,
+  StyleSheet,
+  Platform,
+  View,
+  ActivityIndicator
+} from "react-native";
 import { ThemeProvider, colors } from "react-native-elements";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import Profile from "../../components/Profile";
 import CardGroup from "../../components/CardGroup";
 import Footer from "../../components/Footer";
 
-import items from '../../items.json';
+import groups from "../../groups.json";
+import items from "../../items.json";
+import users from "../../users.json";
 
 const theme = {
   colors: {
@@ -18,52 +27,55 @@ const theme = {
 };
 
 class Home extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       groups: [],
-      name: '',
+      name: "",
       isLoading: false
-    }
+    };
   }
 
-  componentDidMount () {
-    this.setState({ isLoading: true })
+  componentDidMount() {
+    this.setState({ isLoading: true });
 
-    return fetch('http://a42b73e1d037911eaa7010217db8e776-15379359.us-east-1.elb.amazonaws.com:8080/users')
-    .then((response) => response.json())
-    .then((users) => {
-      console.log(users)
-      this.setState({ name: users[0]['Name'] })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-    .finally(() => {
-      fetch('http://a42b73e1d037911eaa7010217db8e776-15379359.us-east-1.elb.amazonaws.com:8080/groups')
-      .then((response) => response.json())
-      .then((groups) => {
-        this.setState({ groups })
+    return fetch("https://onboarding.dev.sam-app.ro/users")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ name: users[2].name });
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(error => {
+        console.log(error);
       })
       .finally(() => {
-        this.setState({ isLoading: false })
-      })
-    })
+        fetch("https://onboarding.dev.sam-app.ro/groups")
+          .then(response => response.json())
+          .then(data => {
+            this.setState({ groups });
+          })
+          .catch(error => {
+            console.log(error);
+          })
+          .finally(() => {
+            this.setState({ isLoading: false });
+          });
+      });
   }
 
-  render () {
+  render() {
     const { navigation } = this.props;
     const { isLoading, groups, name } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
         <View style={styles.container}>
-          <Profile info={groups} name={name} />
+          <Profile
+            info={groups}
+            name={AsyncStorage.getItem("userName")}
+            photoUrl={AsyncStorage.getItem("userPhotoUrl")}
+          />
           {isLoading && <ActivityIndicator />}
           {!isLoading && (
             <FlatList
@@ -93,8 +105,8 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start'
+    flexDirection: "column",
+    justifyContent: "flex-start"
   }
 });
 

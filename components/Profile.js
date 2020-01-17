@@ -1,23 +1,19 @@
-import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Image
-} from 'react-native';
+import React from "react";
+import { StyleSheet, View, Image } from "react-native";
 import { Avatar, Text } from "react-native-elements";
 
 import TrophyPng from "../assets/icons/trophy.png";
 
-const Profile = ({info, name}) => {
+const Profile = ({ info, name, photoUrl }) => {
   let totalDone = 0;
   let total = 0;
-  if(info.length > 0) {
-    totalDone = info.reduce((acc, item) => ({done: acc.done + item.done}));
+  if (info.length > 0) {
+    totalDone = info.reduce((acc, item) => ({ done: acc.done + item.done }));
     total = info.reduce((acc, item) => ({ total: acc.total + item.total }));
   }
   // let totalPercentage = totalDone.done/total.total*100+"%";
 
-  let totalPercentage = 0+"%";
+  let totalPercentage = 0 + "%";
 
   return (
     <View style={styles.container}>
@@ -42,6 +38,7 @@ const Profile = ({info, name}) => {
             rounded
             source={{
               uri:
+                photoUrl ||
                 "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
             }}
           />

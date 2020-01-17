@@ -1,21 +1,26 @@
 [
   {
+    "id": 1,
     "name": "SysOps",
     "description": "SysOps Group"
   },
   {
+    "id": 2,
     "name": "Telecom",
     "description": "Squad Telecom"
   },
   {
+    "id": 3,
     "name": "Slack",
     "description": "Slack Channel Checklist"
   },
   {
+    "id": 4,
     "name": "Hardware",
     "description": "Hardware Tribe Group"
   },
   {
+    "id": 5,
     "name": "People",
     "description": "SumUp People Team"
   }

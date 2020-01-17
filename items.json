@@ -1,133 +1,146 @@
-{
-  "SysOps": [
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    },
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    },
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    }
-  ],
+[
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 1
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 1
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1"
+  },
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 1
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 1
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 1
+  },
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 1
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 1
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 1
+  },
 
-  "Telecom": [
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    }
-  ],
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 2
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 2
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 2
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 2
+  },
 
-  "Slack": [
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    }
-  ],
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 3
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 3
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 3
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 3
+  },
 
-  "Hardware": [
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    }
-  ],
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 4
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 4
+  },
 
-  "People": [
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    },
-    {
-      "todo": "Something to do",
-      "description": "You need to do something",
-      "link": "https://www.google.com.br"
-    },
-    {
-      "todo": "Another thing to do",
-      "description": "another thing you need to do",
-      "link": "https://www.sumup.com"
-    },
-    {
-      "todo": "To Do 1",
-      "description": "To Do number 1"
-    }
-  ]
-}
-
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 5
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 5
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 5
+  },
+  {
+    "todo": "Something to do",
+    "description": "You need to do something",
+    "link": "https://www.google.com.br",
+    "groupId": 5
+  },
+  {
+    "todo": "Another thing to do",
+    "description": "another thing you need to do",
+    "link": "https://www.sumup.com",
+    "groupId": 5
+  },
+  {
+    "todo": "To Do 1",
+    "description": "To Do number 1",
+    "groupId": 5
+  }
+]
