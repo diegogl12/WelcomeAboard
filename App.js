@@ -16,7 +16,7 @@ const App = createAppContainer(
       Home: MainNavigator
     },
     {
-      initialRouteName: "Auth"
+      initialRouteName: "Home"
     }
   )
 );

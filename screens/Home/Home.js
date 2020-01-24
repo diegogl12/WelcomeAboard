@@ -7,7 +7,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { ThemeProvider, colors } from "react-native-elements";
-import AsyncStorage from "@react-native-community/async-storage";
+import { AsyncStorage } from "react-native";
 
 import Profile from "../../components/Profile";
 import CardGroup from "../../components/CardGroup";
@@ -33,11 +33,14 @@ class Home extends React.Component {
     this.state = {
       groups: [],
       name: "",
+      userName: "",
+      userPhotoUrl: "",
       isLoading: false
     };
   }
 
   componentDidMount() {
+    this.getUserInfo();
     this.setState({ isLoading: true });
 
     return fetch("https://onboarding.dev.sam-app.ro/users")
@@ -64,18 +67,31 @@ class Home extends React.Component {
       });
   }
 
+  getUserInfo = () => {
+    AsyncStorage.getItem("userName", (error, userName) => {
+      if (!userName) {
+        this.props.navigation.navigate("Auth");
+      } else {
+        this.setState({ userName });
+      }
+    });
+    AsyncStorage.getItem("userPhotoUrl", (error, userPhotoUrl) => {
+      if (!userPhotoUrl) {
+        this.props.navigation.navigate("Auth");
+      } else {
+        this.setState({ userPhotoUrl });
+      }
+    });
+  };
+
   render() {
     const { navigation } = this.props;
-    const { isLoading, groups, name } = this.state;
+    const { isLoading, userName, userPhotoUrl } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
         <View style={styles.container}>
-          <Profile
-            info={groups}
-            name={AsyncStorage.getItem("userName")}
-            photoUrl={AsyncStorage.getItem("userPhotoUrl")}
-          />
+          <Profile info={groups} name={userName} photoUrl={userPhotoUrl} />
           {isLoading && <ActivityIndicator />}
           {!isLoading && (
             <FlatList
@@ -83,12 +99,12 @@ class Home extends React.Component {
               keyExtractor={(item, index) => `${index}`}
               renderItem={({ item: group }) => (
                 <CardGroup
-                  name={group["Name"]}
-                  total={items[group["Name"]].length}
+                  name={group["name"]}
+                  total={items.filter(it => it.groupId == group.id).length}
                   done={0}
                   onPress={() =>
                     navigation.navigate("Checklist", {
-                      groupName: group["Name"]
+                      groupName: group["name"]
                     })
                   }
                 />

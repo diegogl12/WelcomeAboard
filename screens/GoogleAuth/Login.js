@@ -2,16 +2,16 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Button, Image, Text } from "react-native-elements";
+import { AsyncStorage } from "react-native";
 
-import signInWithGoogleAsync from "./service";
+import { signInWithGoogleAsync, storeUserData } from "./service";
 
 class Login extends React.Component {
   performSignIn = () => {
     signInWithGoogleAsync()
       .then(({ user }) => {
-        this.props.navigation.navigate("Home", {
-          name: user.name,
-          photoUrl: user.photoUrl
+        storeUserData(user, () => {
+          this.props.navigation.navigate("Home");
         });
       })
       .catch(error => {

@@ -1,5 +1,9 @@
 import * as Google from "expo-google-app-auth";
-const signInWithGoogleAsync = async () => {
+
+const USER_NAME_KEY = "userName";
+const USER_PHOTO_URL_KEY = "userPhotoUrl";
+
+export const signInWithGoogleAsync = async () => {
   return await Google.logInAsync({
     androidClientId:
       "84015056402-3u4ucftufkl0ahnpp3jjse0k0753ujn3.apps.googleusercontent.com",
@@ -8,4 +12,21 @@ const signInWithGoogleAsync = async () => {
     scopes: ["profile", "email"]
   });
 };
-export default signInWithGoogleAsync;
+
+export const getUserName = async callback => {
+  return await AsyncStorage.getItem(USER_NAME_KEY, callback);
+};
+
+export const getUserPhotoUrl = async callback => {
+  return await AsyncStorage.getItem(USER_PHOTO_URL_KEY, callback);
+};
+
+export const storeUserData = async (user, callback) => {
+  return await AsyncStorage.setItem("userName", user.name, () => {
+    AsyncStorage.setItem("userPhotoUrl", user.photoUrl, () => {
+      if (callback) {
+        callback(user);
+      }
+    });
+  });
+};
