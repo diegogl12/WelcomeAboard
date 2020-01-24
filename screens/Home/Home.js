@@ -104,7 +104,7 @@ class Home extends React.Component {
                   done={0}
                   onPress={() =>
                     navigation.navigate("Checklist", {
-                      groupName: group["name"]
+                      group: group
                     })
                   }
                 />
