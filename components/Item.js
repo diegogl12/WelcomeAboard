@@ -1,48 +1,52 @@
-import React from 'react';
+import React from "react";
 import { Linking, View, StyleSheet, Image } from "react-native";
-import {
-  CheckBox,
-  Icon,
-  ListItem,
-  Text
-} from 'react-native-elements';
+import { CheckBox, Icon, ListItem, Text } from "react-native-elements";
+
+import { API_URL } from "../config";
 
 class Item extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      checked: false
-    }
+      checked: props.done
+    };
   }
 
   checkChanged = () => {
+    const { id, onCheckChange } = this.props;
     const { checked } = this.state;
-    this.setState({checked: !checked})
+    const new_checked = !checked;
 
-    if(this.props.onCheckChange) {
-      this.props.onCheckChange({ checked: !checked });
-    }
-  }
+    fetch(`${API_URL}/task_users/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ task_user: { done: new_checked } })
+    })
+      .then(data => data.json())
+      .then(data => {
+        this.setState({ checked: new_checked });
 
-  render () {
+        if (onCheckChange) {
+          onCheckChange({ id, checked: new_checked });
+        }
+      });
+  };
+
+  render() {
     const { title, description, link } = this.props;
 
     return (
-      // <ListItem
-      //   title={title}
-      //   subtitle={description}
-      //   leftElement={<CheckBox checked={this.state.checked} onPress={this.checkChanged} />}
-      //   rightElement={link && <Icon name='launch' color='blue' onPress={() => Linking.openURL(link)} />}
-      //   bottomDivider />
       <View style={styles.container}>
         <View style={styles.card}>
           <View style={styles.checkbox}>
             <CheckBox
               checked={this.state.checked}
               onPress={this.checkChanged}
-              containerStyle={{marginRight: 0}}
+              containerStyle={{ marginRight: 0 }}
               checkedIcon={
                 <Image
                   style={{ width: 24, height: 24, marginRight: 3 }}
@@ -63,7 +67,6 @@ class Item extends React.Component {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     backgroundColor: "white"
   },
-  checkbox:{
+  checkbox: {
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
