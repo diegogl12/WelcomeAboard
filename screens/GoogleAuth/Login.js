@@ -10,7 +10,7 @@ class Login extends React.Component {
   performSignIn = () => {
     signInWithGoogleAsync()
       .then(({ user }) => {
-        storeUserData(user, () => {
+        storeUserData(user).then(() => {
           this.props.navigation.navigate("Home");
         });
       })

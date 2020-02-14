@@ -8,14 +8,14 @@ import {
 } from "react-native";
 import { ThemeProvider, colors } from "react-native-elements";
 import { AsyncStorage } from "react-native";
+import { NavigationEvents } from "react-navigation";
 
 import Profile from "../../components/Profile";
 import CardGroup from "../../components/CardGroup";
 import Footer from "../../components/Footer";
 
-import groups from "../../groups.json";
-import items from "../../items.json";
-import users from "../../users.json";
+import { getUser } from "../GoogleAuth/service";
+import { API_URL } from "../../config";
 
 const theme = {
   colors: {
@@ -35,63 +35,52 @@ class Home extends React.Component {
       name: "",
       userName: "",
       userPhotoUrl: "",
+      user: {},
       isLoading: false
     };
   }
 
   componentDidMount() {
-    this.getUserInfo();
     this.setState({ isLoading: true });
-
-    return fetch("https://onboarding.dev.sam-app.ro/users")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        this.setState({ name: users[2].name });
-      })
-      .catch(error => {
-        console.log(error);
-      })
-      .finally(() => {
-        fetch("https://onboarding.dev.sam-app.ro/groups")
-          .then(response => response.json())
-          .then(data => {
-            this.setState({ groups });
-          })
-          .catch(error => {
-            console.log(error);
-          })
-          .finally(() => {
-            this.setState({ isLoading: false });
-          });
-      });
+    this.getUserDataAndGroups();
   }
 
-  getUserInfo = () => {
-    AsyncStorage.getItem("userName", (error, userName) => {
-      if (!userName) {
-        this.props.navigation.navigate("Auth");
-      } else {
-        this.setState({ userName });
-      }
+  getUserDataAndGroups() {
+    getUser().then(userData => {
+      const [nameKey, name] = userData[0];
+      const [emailKey, email] = userData[1];
+      const [photoKey, photoUrl] = userData[2];
+      const user = {
+        name,
+        email,
+        photoUrl
+      };
+
+      this.setState({ user });
+
+      return fetch(`${API_URL}/users/${user.email}/categories.json`)
+        .then(response => response.json())
+        .then(categories => {
+          this.setState({ groups: categories });
+        })
+        .catch(error => {
+          console.warn(error);
+        })
+        .finally(() => {
+          this.setState({ isLoading: false });
+        });
     });
-    AsyncStorage.getItem("userPhotoUrl", (error, userPhotoUrl) => {
-      if (!userPhotoUrl) {
-        this.props.navigation.navigate("Auth");
-      } else {
-        this.setState({ userPhotoUrl });
-      }
-    });
-  };
+  }
 
   render() {
     const { navigation } = this.props;
-    const { isLoading, userName, userPhotoUrl } = this.state;
+    const { isLoading, user, userName, userPhotoUrl, groups } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
         <View style={styles.container}>
-          <Profile info={groups} name={userName} photoUrl={userPhotoUrl} />
+          <NavigationEvents onDidFocus={() => this.getUserDataAndGroups()} />
+          <Profile info={groups} name={user.name} photoUrl={user.photoUrl} />
           {isLoading && <ActivityIndicator />}
           {!isLoading && (
             <FlatList
@@ -99,11 +88,12 @@ class Home extends React.Component {
               keyExtractor={(item, index) => `${index}`}
               renderItem={({ item: group }) => (
                 <CardGroup
-                  name={group["name"]}
-                  total={items.filter(it => it.groupId == group.id).length}
-                  done={0}
+                  name={group.name}
+                  total={group.tasks_count}
+                  done={group.tasks_done_count}
                   onPress={() =>
                     navigation.navigate("Checklist", {
+                      user: user,
                       group: group
                     })
                   }

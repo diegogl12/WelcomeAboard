@@ -1,6 +1,8 @@
 import * as Google from "expo-google-app-auth";
+import { AsyncStorage } from "react-native";
 
 const USER_NAME_KEY = "userName";
+const USER_EMAIL_KEY = "userEmail";
 const USER_PHOTO_URL_KEY = "userPhotoUrl";
 
 export const signInWithGoogleAsync = async () => {
@@ -17,16 +19,28 @@ export const getUserName = async callback => {
   return await AsyncStorage.getItem(USER_NAME_KEY, callback);
 };
 
+export const getUserEmail = async callback => {
+  return await AsyncStorage.getItem(USER_EMAIL_KEY, callback);
+};
+
 export const getUserPhotoUrl = async callback => {
   return await AsyncStorage.getItem(USER_PHOTO_URL_KEY, callback);
 };
 
-export const storeUserData = async (user, callback) => {
-  return await AsyncStorage.setItem("userName", user.name, () => {
-    AsyncStorage.setItem("userPhotoUrl", user.photoUrl, () => {
-      if (callback) {
-        callback(user);
-      }
-    });
-  });
+export const getUser = callback => {
+  return AsyncStorage.multiGet(
+    [USER_NAME_KEY, USER_EMAIL_KEY, USER_PHOTO_URL_KEY],
+    callback
+  );
+};
+
+export const storeUserData = (user, callback) => {
+  return AsyncStorage.multiSet(
+    [
+      [USER_NAME_KEY, user.name],
+      [USER_EMAIL_KEY, user.email],
+      [USER_PHOTO_URL_KEY, user.photoUrl]
+    ],
+    callback
+  );
 };
