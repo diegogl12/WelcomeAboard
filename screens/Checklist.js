@@ -41,9 +41,8 @@ class Checklist extends React.Component {
             <Item
               id={item.id}
               onCheckChange={this.itemCheckChanged}
-              title={`${i}. ${item.task.title}`}
+              title={item.task.title}
               description={item.task.description}
-              link={item.task.todo}
               done={item.done}
             />
           )}

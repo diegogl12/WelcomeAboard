@@ -1,6 +1,16 @@
 import React from "react";
-import { Linking, View, StyleSheet, Image } from "react-native";
+import {
+  Linking,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Dimensions
+} from "react-native";
 import { CheckBox, Icon, ListItem, Text } from "react-native-elements";
+import { Accordion } from "@dooboo-ui/native";
+import HTML from "react-native-render-html";
 
 import { API_URL } from "../config";
 
@@ -37,32 +47,46 @@ class Item extends React.Component {
   };
 
   render() {
-    const { title, description, link } = this.props;
+    const { title, description } = this.props;
 
     return (
       <View style={styles.container}>
         <View style={styles.card}>
-          <View style={styles.checkbox}>
-            <CheckBox
-              checked={this.state.checked}
-              onPress={this.checkChanged}
-              containerStyle={{ marginRight: 0 }}
-              checkedIcon={
-                <Image
-                  style={{ width: 24, height: 24, marginRight: 3 }}
-                  source={require("../assets/icons/checked.png")}
+          <Accordion
+            header={
+              <View style={styles.checkbox}>
+                <CheckBox
+                  checked={this.state.checked}
+                  onPress={this.checkChanged}
+                  containerStyle={{ marginRight: 0 }}
+                  checkedIcon={
+                    <Image
+                      style={{ width: 24, height: 24, marginRight: 3 }}
+                      source={require("../assets/icons/checked.png")}
+                    />
+                  }
+                  uncheckedIcon={
+                    <Image
+                      style={{ width: 24, height: 24, marginRight: 3 }}
+                      source={require("../assets/icons/unchecked.png")}
+                    />
+                  }
                 />
-              }
-              uncheckedIcon={
-                <Image
-                  style={{ width: 24, height: 24, marginRight: 3 }}
-                  source={require("../assets/icons/unchecked.png")}
-                />
-              }
-            />
-            <Text style={{ color: "#9DA7B1" }}>{title}</Text>
-          </View>
-          <Text style={{ color: "#3388FF" }}>Preview</Text>
+                <Text style={{ color: "#9DA7B1" }}>{title}</Text>
+                <View>
+                  <Text style={{ color: "#3388FF" }}>More</Text>
+                </View>
+              </View>
+            }
+          >
+            <ScrollView>
+              <HTML
+                html={description}
+                textSelectable={true}
+                imagesMaxWidth={Dimensions.get("window").width}
+              />
+            </ScrollView>
+          </Accordion>
         </View>
       </View>
     );
@@ -81,7 +105,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    height: 60,
     paddingRight: 18,
     borderRadius: 4,
     elevation: 2,
@@ -93,7 +116,7 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row"
   }
