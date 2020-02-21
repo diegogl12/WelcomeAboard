@@ -81,6 +81,7 @@ class Item extends React.Component {
           >
             <ScrollView>
               <HTML
+                containerStyle={{ minWidth: Dimensions.get("window").width }}
                 html={description}
                 textSelectable={true}
                 imagesMaxWidth={Dimensions.get("window").width}
