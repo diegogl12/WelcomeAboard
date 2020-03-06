@@ -3,6 +3,7 @@
   "displayName": "Welcome Aboard!",
   "expo": {
     "name": "WelcomeAboard",
+    "icon": "./assets/icons/baby.png",
     "slug": "expo-template-bare",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
@@ -12,6 +13,14 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.sumup.welcomeAboard",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.sumup.welcomeAboard",
+      "versionCode": 1
+    }
   }
 }

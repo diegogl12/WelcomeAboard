@@ -4,14 +4,24 @@ import { StyleSheet, View } from "react-native";
 import { Button, Image, Text } from "react-native-elements";
 import { AsyncStorage } from "react-native";
 
-import { signInWithGoogleAsync, storeUserData } from "./service";
+import { getUserEmail, signInWithGoogleAsync, signOutUser, storeUserData } from "./service";
 
 class Login extends React.Component {
+
+  componentDidMount() {
+    getUserEmail()
+    .then((email) => {
+      if (email) {
+        this.goToHome();
+      }
+    });
+  }
+
   performSignIn = () => {
     signInWithGoogleAsync()
       .then(({ user }) => {
         storeUserData(user).then(() => {
-          this.props.navigation.navigate("Home");
+          this.goToHome();
         });
       })
       .catch(error => {
@@ -19,6 +29,11 @@ class Login extends React.Component {
         this.setState({});
       });
   };
+
+  goToHome () {
+    this.props.navigation.navigate("Home");
+  }
+
   render() {
     return (
       <View style={styles.container}>

@@ -6,12 +6,7 @@ import { Text } from "react-native-elements";
 const CardGroup = ({ name, done, total, onPress }) => (
   <TouchableOpacity style={styles.cardContainer} onPress={onPress}>
     <View style={styles.card}>
-      <View style={styles.background}>
-        <Image
-          style={styles.icon}
-          source={require("../assets/icons/baby.png")}
-        />
-      </View>
+      <View style={styles.background} />
       <View style={styles.contentView}>
         <Text style={{ fontSize: 24, fontWeight: "bold", color: "#3388FF" }}>
           {name}

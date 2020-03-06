@@ -44,3 +44,7 @@ export const storeUserData = (user, callback) => {
     callback
   );
 };
+
+export const signOutUser = (callback) => {
+  return AsyncStorage.clear(callback);
+}
